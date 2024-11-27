@@ -32,3 +32,14 @@ resource "aws_dynamodb_table" "terraform_state_lock" {
     type = "S"
   }
 }
+resource "aws_dynamodb_table" "terraform_state_lock" {
+  name           = "terraform-state-lock"  # Nombre de la tabla
+  read_capacity  = 1
+  write_capacity = 1
+  hash_key       = "LockID"
+
+  attribute {
+    name = "LockID"
+    type = "S"
+  }
+}
